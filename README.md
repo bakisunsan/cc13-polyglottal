@@ -19,7 +19,7 @@ samples, guidance on mobile development, and a full API reference.
 
 assembly language c c++ scala typescript javascript python java go c# perl
 VDM++ alloy JCSP OCaml Promela
- (Dart/Rust/Kotlin/Exliar/swift -> react native or flutter?/rails)
+(Dart/Rust/Kotlin/Exliar/swift -> react native or flutter?/rails)
 
 ## Set Up
 
@@ -152,7 +152,7 @@ Console(AOT to native machine code)
 
 ### Stage 2
 
-- [ ] Find a tutorial or project similar to what you want to build
+- [x] Find a tutorial or project similar to what you want to build
 
 What I want to build is Flutter(+Firebase) App.
 So I first installed Flutter by following Flutter official tutorial:
@@ -179,12 +179,12 @@ Configure Xcode
 ```
 
 Run iOS Device Simulator
+
 ```
 open -a Simulator
 ```
 
 configure VSCode for Flutter Development, following [official tool setup document](https://flutter.dev/docs/development/tools/vs-code)
-
 
 create new Flutter project on VS Code
 
@@ -200,9 +200,36 @@ fn + 5
 
 - [x] [Todolist Flutter](https://github.com/lesnitsky/todolist_flutter)
 
-[Flutter Firebase](https://codelabs.developers.google.com/codelabs/flutter-firebase)
+- [x] [Flutter Firebase](https://codelabs.developers.google.com/codelabs/flutter-firebase)
 
-- [ ] Build and run the project from the command line
+install CocoaPods
+
+```
+sudo gem install cocoapods
+
+pod install
+```
+
+create firebase project
+
+- [x] Build and run the project from the command line
+
+create project on firebase
+
+configure iOS App on firebase
+
+add GoogleService-Info.plist to Flutter App
+
+```
+flutter packages get
+```
+
+run flutter app
+
+```
+flutter run
+```
+
 - [ ] Figure out how to debug
 
 ### Stage 3
@@ -245,4 +272,3 @@ At the end of the week in Block 4+5, you will give a presentation on your langua
 
 - [ ] Test coverage! Write tests for your code in your new language.
 - [ ] Have both front-end and back-end in your language.
-
