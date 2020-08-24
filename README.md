@@ -198,7 +198,7 @@ run Flutter App on VS Code and iOS Device Simulator
 fn + 5
 ```
 
-[Todolist Flutter](https://github.com/lesnitsky/todolist_flutter)
+- [x] [Todolist Flutter](https://github.com/lesnitsky/todolist_flutter)
 
 [Flutter Firebase](https://codelabs.developers.google.com/codelabs/flutter-firebase)
 
