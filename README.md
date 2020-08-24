@@ -24,12 +24,28 @@ Test
 
 ### Questions to Ask
 
-- [ ] Is it already installed on your machine? If so, what version?
-- [ ] Are there multiple versions of the language? Which is best?
-- [ ] Is there an online sandbox for your language? Try it out!
-- [ ] How to install it?
-- [ ] What is its package manager?
-- [ ] What IDEs are common?
+- [x] Is it already installed on your machine? If so, what version?
+      Not installed yet.
+
+- [x] Are there multiple versions of the language? Which is best?
+      Dart1 and Dart2. Dart1 is killed by TypeScript, Dart2 came back to life with Flutter with new powerful language features, like typing.
+
+- [x] Is there an online sandbox for your language? Try it out!
+
+[DartPad](https://dartpad.dev/)
+
+- [x] How to install it?
+
+in Mac: brew
+
+- [x] What is its package manager?
+
+pub: Dart official package manager
+
+- [x] What IDEs are common?
+
+VSCode, Android Studio, IntellJ
+
 - [ ] What testing suite is most popular?
 - [ ] Where does your package manager load dependencies from?
 - [ ] What are the most popular frameworks?
