@@ -2,6 +2,10 @@
 
 ## Why Dart?
 
+assembly language c c++ scala typescript javascript python java go c# perl
+VDM++ alloy JCSP OCaml Promela
+ (Dart/Rust/Kotlin/Exliar/swift -> react native or flutter?/rails)
+
 ## Set Up
 
 ## Write Code
@@ -159,8 +163,24 @@ Configure Xcode
  sudo xcodebuild -runFirstLaunch
 ```
 
+Run iOS Device Simulator
 ```
 open -a Simulator
+```
+
+configure VSCode for Flutter Development, following [official tool setup document](https://flutter.dev/docs/development/tools/vs-code)
+
+
+create new Flutter project on VS Code
+
+```
+cmd + shift + P -> Flutter: New Project
+```
+
+run Flutter App on VS Code and iOS Device Simulator
+
+```
+fn + 5
 ```
 
 [Todolist Flutter](https://github.com/lesnitsky/todolist_flutter)
