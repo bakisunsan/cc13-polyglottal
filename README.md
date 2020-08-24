@@ -134,6 +134,39 @@ Console(AOT to native machine code)
 ### Stage 2
 
 - [ ] Find a tutorial or project similar to what you want to build
+
+What I want to build is Flutter(+Firebase) App.
+So I first installed Flutter by following Flutter official tutorial:
+[Flutter install](https://flutter.dev/docs/get-started/install)
+
+get Flutter binary
+
+```
+ghq get https://github.com/flutter/flutter.git
+* `ghq get` is similar command to `git clone`
+```
+
+export path
+
+```
+export PATH="$PATH:`pwd`/flutter/bin"
+```
+
+Configure Xcode
+
+```
+ sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+ sudo xcodebuild -runFirstLaunch
+```
+
+```
+open -a Simulator
+```
+
+[Todolist Flutter](https://github.com/lesnitsky/todolist_flutter)
+
+[Flutter Firebase](https://codelabs.developers.google.com/codelabs/flutter-firebase)
+
 - [ ] Build and run the project from the command line
 - [ ] Figure out how to debug
 
