@@ -240,7 +240,7 @@ flutter run
 - [ ] Tips and Suggestions [Totally Optional]
 - [ ] Find the 'koans' for your chosen language! Koans is a nice, quick way to learn the environment setup, testing framework, and syntax of a new language. Do a quick Google search to find the koans for your language (i.e. 'ruby koans').
 - [ ] Find a cheat sheet! While not in-depth, they do help if you need a quick reference.
-- [ ] Avoid doing codecademy/prog8---while those are helpful when you are starting with your first language, you should try to stick to official and community resources for your language.
+- [x] Avoid doing codecademy/prog8---while those are helpful when you are starting with your first language, you should try to stick to official and community resources for your language.
 
 ### Basic Requirements
 
@@ -252,19 +252,19 @@ At the end of the week in Block 4+5, you will give a presentation on your langua
 - [ ] Some topic ideas to talk about:
 - [ ] Your language's ecosystem (IDEs, dependencies, package managers, community, etc.)
 - [ ] Comparison of new language to JavaScript
-- [ ] Is it typed? Strong/Loose? Dynamic/Static?
-- [ ] Basic data types
+- [x] Is it typed? Strong/Loose? Dynamic/Static?
+- [x] Basic data types
 - [ ] Concepts like functions/classes
 - [ ] Does it have modules? A similar concept?
-- [ ] If it has a frontend framework, draw comparisons from it to React/Vue
+- [x] If it has a frontend framework, draw comparisons from it to React/Vue
 - [ ] If it has a server framework, draw comparisons to express
-- [ ] Describe how testing works in the new language
+- [x] Describe how testing works in the new language
       Famous framework to use
-- [ ] Style of tests (BDD?)
+- [x] Style of tests (BDD?)
 - [ ] Share challenges you experienced while learning the new language
-- [ ] Explain the strengths of the new language
-- [ ] Describe what types of projects it is best suited for
-- [ ] Anything else that you believe would be beneficial
+- [x] Explain the strengths of the new language
+- [x] Describe what types of projects it is best suited for
+- [x] Anything else that you believe would be beneficial
 - [ ] A project README that covers what you did and used. Your README should be easy to understand for someone who wants to work on your project. If you want to see what a good README looks like, check out this link and these readmes.
       Your README should also include your presentation slide deck and instructions for your demo (if applicable)
 
