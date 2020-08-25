@@ -29,7 +29,7 @@ class MyClass2 extends BaseClass {
 
   //MyClass2();
 
-  MyClass2(this._age, this._name);
+  MyClass2(this._age, this._name) : super();
 
   MyClass2.valueOneMyClass() {
     this._age = 1;
