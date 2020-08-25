@@ -165,7 +165,7 @@ ghq get https://github.com/flutter/flutter.git
 * `ghq get` is similar command to `git clone`
 ```
 
-export path
+export paRth
 
 ```
 export PATH="$PATH:`pwd`/flutter/bin"
