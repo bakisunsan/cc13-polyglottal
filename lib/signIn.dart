@@ -69,15 +69,30 @@ class _MySignInPageState extends State<MySignInPage> {
                                   print(result.user.email))
                               .catchError((e) => {
                                     if (e
-                                        .toString()
-                                        .contains("ERROR_USER_NOT_FOUND"))
-                                      {print("USER NOT FOUND")}
-                                    else if (e
-                                        .toString()
-                                        .contains("ERROR_WRONG_PASSWORD"))
-                                      {print("WRONG PASSWORD")}
+                                            .toString()
+                                            .contains("ERROR_USER_NOT_FOUND") ||
+                                        e
+                                            .toString()
+                                            .contains("ERROR_WRONG_PASSWORD"))
+                                      {
+                                        showDialog(
+                                          context: context,
+                                          builder: (_) {
+                                            return _buildAuthFailedDialog(
+                                                "Invalid email or password");
+                                          },
+                                        )
+                                      }
                                     else
-                                      {print(e)}
+                                      {
+                                        showDialog(
+                                          context: context,
+                                          builder: (_) {
+                                            return _buildAuthFailedDialog(
+                                                "Un expected error occurred");
+                                          },
+                                        )
+                                      }
                                   });
                         }
                       },
@@ -89,6 +104,15 @@ class _MySignInPageState extends State<MySignInPage> {
           ),
         ));
   }
+}
+
+Widget _buildAuthFailedDialog(String message) {
+  return AlertDialog(
+    title: Center(child: Text("Failed to Sign-In")),
+    content: SingleChildScrollView(
+      child: Text(message),
+    ),
+  );
 }
 
 Future<AuthResult> signIn(String email, String password) async {
