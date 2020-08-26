@@ -66,7 +66,8 @@ class _MySignInPageState extends State<MySignInPage> {
                           var email = emailController.text.trim();
                           var password = passwordController.text.trim();
                           signIn(email, password)
-                              .then((AuthResult result) => openPage(context))
+                              .then((AuthResult result) => Navigator.of(context)
+                                  .pushNamed('/vote', arguments: result))
                               .catchError((e) => {
                                     if (e
                                             .toString()
@@ -113,16 +114,6 @@ Widget _buildAuthFailedDialog(String message) {
       child: Text(message),
     ),
   );
-}
-
-void openPage(BuildContext context) {
-  // TODO use replacement after test finish
-  Navigator.push(context, MaterialPageRoute(
-    //Navigator.pushReplacement(context, MaterialPageRoute(
-    builder: (BuildContext context) {
-      return MyVotePage();
-    },
-  ));
 }
 
 Future<AuthResult> signIn(String email, String password) async {

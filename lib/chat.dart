@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class MyChatPage extends StatefulWidget {
   @override
@@ -10,6 +11,10 @@ class MyChatPage extends StatefulWidget {
 class _MyChatPageState extends State<MyChatPage> {
   @override
   Widget build(BuildContext context) {
+    final AuthResult auth = ModalRoute.of(context).settings.arguments;
+    print("chat");
+    print(auth);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Talk about langs'),

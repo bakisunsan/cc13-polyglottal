@@ -1,7 +1,6 @@
-import 'package:cc13_polygottal/chat.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import './chat.dart';
 
 class MyVotePage extends StatefulWidget {
   @override
@@ -10,17 +9,13 @@ class MyVotePage extends StatefulWidget {
   }
 }
 
-void openPage(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(
-    builder: (BuildContext context) {
-      return MyChatPage();
-    },
-  ));
-}
-
 class _MyVotePageState extends State<MyVotePage> {
   @override
   Widget build(BuildContext context) {
+    final AuthResult auth = ModalRoute.of(context).settings.arguments;
+    print("vote");
+    print(auth);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Your Favorite Lang'),
@@ -51,7 +46,7 @@ class _MyVotePageState extends State<MyVotePage> {
             icon: const Icon(Icons.navigate_next),
             tooltip: 'Next page',
             onPressed: () {
-              openPage(context);
+              Navigator.of(context).pushNamed('/chat', arguments: auth);
             },
           ),
         ],
