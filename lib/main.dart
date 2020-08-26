@@ -10,22 +10,16 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool loggedIn;
-
   @override
   void initState() {
     super.initState();
-    // TODO detect initial vue this hard coded flag;
-    this.setState(() {
-      loggedIn = false;
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Your Favorite Programming Language',
-      home: loggedIn ? MyVotePage() : MySignInPage(),
+      home: MySignInPage(),
     );
   }
 }
