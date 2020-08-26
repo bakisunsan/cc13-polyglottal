@@ -20,11 +20,69 @@ class MyHomePage extends StatefulWidget {
   }
 }
 
+void openPage(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(
+    builder: (BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Next page'),
+        ),
+        body: const Center(
+          child: Text(
+            'This is the next page',
+            style: TextStyle(fontSize: 24),
+          ),
+        ),
+      );
+    },
+  ));
+}
+
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Your Favorite Programming Language')),
+      appBar: AppBar(
+        title: Text('Your Favorite Lang'),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.done_all),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (_) {
+                  return AlertDialog(
+                    title: Center(child: Text("Votes Result")),
+                    content: SingleChildScrollView(
+                      child: ListBody(
+                        children: <Widget>[
+                          Center(child: Text("🎉🎉🎉Winner is Dart🎉🎉🎉")),
+                          Center(child: Image.asset('images/dart_logo.png')),
+                          Center(child: Text("🎉🎉🎉Winner is Dart🎉🎉🎉")),
+                        ],
+                      ),
+                    ),
+                    actions: <Widget>[
+                      FlatButton(
+                        child: Text("OK"),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.navigate_next),
+            tooltip: 'Next page',
+            onPressed: () {
+              openPage(context);
+            },
+          ),
+        ],
+      ),
       body: _buildBody(context),
     );
   }
