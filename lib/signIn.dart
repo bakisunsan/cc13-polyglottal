@@ -62,9 +62,23 @@ class _MySignInPageState extends State<MySignInPage> {
                       child: const Text('Login'),
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
-                          var email = emailController.text;
-                          var password = passwordController.text;
-                          // TODO Login HERE
+                          var email = emailController.text.trim();
+                          var password = passwordController.text.trim();
+                          signIn(email, password)
+                              .then((AuthResult result) =>
+                                  print(result.user.email))
+                              .catchError((e) => {
+                                    if (e
+                                        .toString()
+                                        .contains("ERROR_USER_NOT_FOUND"))
+                                      {print("USER NOT FOUND")}
+                                    else if (e
+                                        .toString()
+                                        .contains("ERROR_WRONG_PASSWORD"))
+                                      {print("WRONG PASSWORD")}
+                                    else
+                                      {print(e)}
+                                  });
                         }
                       },
                     ),
@@ -75,4 +89,11 @@ class _MySignInPageState extends State<MySignInPage> {
           ),
         ));
   }
+}
+
+Future<AuthResult> signIn(String email, String password) async {
+  final _firebaseAuth = FirebaseAuth.instance;
+  final AuthResult result = await _firebaseAuth.signInWithEmailAndPassword(
+      email: email, password: password);
+  return result;
 }
