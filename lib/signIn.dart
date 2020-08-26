@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import './vote.dart';
 
 class MySignInPage extends StatefulWidget {
   @override
@@ -17,7 +18,7 @@ class _MySignInPageState extends State<MySignInPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text('SignIn'),
+          title: const Text('Sign-In'),
         ),
         body: new Center(
           child: new Form(
@@ -65,8 +66,7 @@ class _MySignInPageState extends State<MySignInPage> {
                           var email = emailController.text.trim();
                           var password = passwordController.text.trim();
                           signIn(email, password)
-                              .then((AuthResult result) =>
-                                  print(result.user.email))
+                              .then((AuthResult result) => openPage(context))
                               .catchError((e) => {
                                     if (e
                                             .toString()
@@ -113,6 +113,14 @@ Widget _buildAuthFailedDialog(String message) {
       child: Text(message),
     ),
   );
+}
+
+void openPage(BuildContext context) {
+  Navigator.pushReplacement(context, MaterialPageRoute(
+    builder: (BuildContext context) {
+      return MyVotePage();
+    },
+  ));
 }
 
 Future<AuthResult> signIn(String email, String password) async {
