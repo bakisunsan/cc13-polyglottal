@@ -8,15 +8,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Your Favorite Programming Language',
-      home: MyHomePage(),
+      home: MyVotePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyVotePage extends StatefulWidget {
   @override
-  _MyHomePageState createState() {
-    return _MyHomePageState();
+  _MyVotePageState createState() {
+    return _MyVotePageState();
   }
 }
 
@@ -38,7 +38,7 @@ void openPage(BuildContext context) {
   ));
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyVotePageState extends State<MyVotePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
