@@ -85,7 +85,9 @@ class _MyVotePageState extends State<MyVotePage> {
 
   void _addNewLanguage(String name) {
     if (name.isNotEmpty) {
-      Firestore.instance.collection('lang').add({"name": name, "votes": 0});
+      Firestore.instance
+          .collection('lang')
+          .add({"name": name, "votes": 0, "members": 0});
       Navigator.pop(context);
     }
   }
