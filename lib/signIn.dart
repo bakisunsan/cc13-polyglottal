@@ -116,7 +116,9 @@ Widget _buildAuthFailedDialog(String message) {
 }
 
 void openPage(BuildContext context) {
-  Navigator.pushReplacement(context, MaterialPageRoute(
+  // TODO use replacement after test finish
+  Navigator.push(context, MaterialPageRoute(
+    //Navigator.pushReplacement(context, MaterialPageRoute(
     builder: (BuildContext context) {
       return MyVotePage();
     },
