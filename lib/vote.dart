@@ -26,8 +26,18 @@ class _MyVotePageState extends State<MyVotePage> {
         title: Text('Your Favorite Lang'),
         actions: <Widget>[
           IconButton(
+            icon: const Icon(Icons.control_point_outlined),
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (_) {
+                  return _buildAddLangDialog();
+                },
+              );
+            },
+          ),
+          IconButton(
             icon: const Icon(Icons.done_all),
-            tooltip: 'Show Snackbar',
             onPressed: () {
               showDialog(
                 context: context,
@@ -48,6 +58,41 @@ class _MyVotePageState extends State<MyVotePage> {
       ),
       body: _buildBody(context),
     );
+  }
+
+  Widget _buildAddLangDialog() {
+    String newLang = "";
+    return AlertDialog(
+      title: Center(child: Text("Add New Language")),
+      content: SingleChildScrollView(
+        child: Row(
+          children: <Widget>[
+            Expanded(
+                child: new TextField(
+              autofocus: true,
+              decoration: new InputDecoration(
+                  labelText: 'name', hintText: 'new language name'),
+              onChanged: (value) {
+                newLang = value;
+              },
+            )),
+          ],
+        ),
+      ),
+      actions: <Widget>[
+        FlatButton(
+            child: Text("Cancel"), onPressed: () => Navigator.pop(context)),
+        FlatButton(
+            child: Text("OK"), onPressed: () => _addNewLanguage(newLang)),
+      ],
+    );
+  }
+
+  void _addNewLanguage(String name) {
+    if (name.isNotEmpty) {
+      Firestore.instance.collection('lang').add({"name": name, "votes": 0});
+      Navigator.pop(context);
+    }
   }
 
   Widget _buildResultDialog() {
