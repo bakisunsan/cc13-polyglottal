@@ -20,11 +20,11 @@ class _MyChatPageState extends State<MyChatPage> {
       appBar: AppBar(
         title: const Text('Talk about langs'),
       ),
-      body: _buildBody(context),
+      body: _buildBody(context, auth),
     );
   }
 
-  Widget _buildBody(BuildContext context) {
+  Widget _buildBody(BuildContext context, AuthResult auth) {
     return StreamBuilder<QuerySnapshot>(
       stream: Firestore.instance.collection('lang').snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -62,16 +62,22 @@ class _MyChatPageState extends State<MyChatPage> {
                         child: GestureDetector(
                             onTap: () {
                               var channel = document.data["name"];
-                              var members = document.data["members"] + 1;
 
                               var snackBar = SnackBar(
                                   content: Text(
-                                      "Hello! $members th $channel channel member"));
+                                      "Hello! Welocome to $channel channel"));
                               Scaffold.of(context).showSnackBar(snackBar);
 
                               final record = Room.fromSnapshot(document);
                               record.reference.updateData(
                                   {'members': FieldValue.increment(1)});
+
+                              Future.delayed(new Duration(seconds: 2)).then(
+                                  (value) => Navigator.of(context)
+                                          .pushNamed('/chatroom', arguments: {
+                                        "auth": auth,
+                                        "room": channel
+                                      }));
                             },
                             child: Container(
                                 child: document.data["logo"] != null
