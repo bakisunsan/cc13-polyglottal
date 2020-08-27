@@ -14,6 +14,7 @@ dependencies:
   intl:
   cloud_firestore: ^0.13.0+1
   firebase_auth:
+  google_sign_in:
 
 dev_dependencies:
   flutter_test:

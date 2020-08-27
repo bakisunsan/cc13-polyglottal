@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class MySignInPage extends StatefulWidget {
   @override
@@ -12,23 +13,23 @@ class _MySignInPageState extends State<MySignInPage> {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    final emailController = new TextEditingController();
-    final passwordController = new TextEditingController();
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
 
     return Scaffold(
         appBar: AppBar(
           title: const Text('Sign-In'),
         ),
-        body: new Center(
-          child: new Form(
+        body: Center(
+          child: Form(
             key: _formKey,
-            child: new SingleChildScrollView(
+            child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: new Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   const SizedBox(height: 24.0),
-                  new TextFormField(
+                  TextFormField(
                     controller: emailController,
                     decoration: const InputDecoration(
                       border: const UnderlineInputBorder(),
@@ -43,9 +44,9 @@ class _MySignInPageState extends State<MySignInPage> {
                     },
                   ),
                   const SizedBox(height: 24.0),
-                  new TextFormField(
+                  TextFormField(
                     controller: passwordController,
-                    decoration: new InputDecoration(
+                    decoration: InputDecoration(
                       border: const UnderlineInputBorder(),
                       labelText: 'Password',
                     ),
@@ -57,8 +58,8 @@ class _MySignInPageState extends State<MySignInPage> {
                     },
                   ),
                   const SizedBox(height: 24.0),
-                  new Center(
-                    child: new RaisedButton(
+                  Center(
+                    child: RaisedButton(
                       child: const Text('Login'),
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
@@ -98,6 +99,17 @@ class _MySignInPageState extends State<MySignInPage> {
                       },
                     ),
                   ),
+                  Center(
+                    child: RaisedButton(
+                      child: const Text('Sign-In with Google'),
+                      onPressed: () {
+                        print("Google");
+                        signInWithGoogle(context)
+                            .then((result) => {print(result)})
+                            .catchError((e) => {print(e)});
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -119,5 +131,21 @@ Future<AuthResult> signIn(String email, String password) async {
   final _firebaseAuth = FirebaseAuth.instance;
   final AuthResult result = await _firebaseAuth.signInWithEmailAndPassword(
       email: email, password: password);
+  return result;
+}
+
+Future<AuthResult> signInWithGoogle(BuildContext context) async {
+  final GoogleSignIn _googleSignIn = new GoogleSignIn();
+
+  final GoogleSignInAccount googleSignInAccount = await _googleSignIn.signIn();
+  final GoogleSignInAuthentication googleSignInAuthentication =
+      await googleSignInAccount.authentication;
+
+  final AuthCredential credential = GoogleAuthProvider.getCredential(
+      idToken: googleSignInAuthentication.idToken,
+      accessToken: googleSignInAuthentication.accessToken);
+
+  AuthResult result =
+      await FirebaseAuth.instance.signInWithCredential(credential);
   return result;
 }
