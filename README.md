@@ -25,11 +25,25 @@ And you can also add a new language and see the winner from buttons on navigatio
 
 <img src="./readme/chatroom.png" height=480px/>
 
-You can join the chat room for each language, and start chat.
+You can join the chat room as a member of the room for each language, and start chat.
+
+<img src="./readme/chat.png" height=480px/>
+
+You can start real time chatting on this chat view.
 
 ### Tech Stack
 
 ![](./readme/architecture.png)
+
+Frontend
+
+- Flutter 1.22.0
+- Dart 2.9.1
+
+Backend
+
+- Firebase Authentication
+- Firebase Firestore
 
 ## Why Dart?
 

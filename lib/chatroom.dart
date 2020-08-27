@@ -10,7 +10,10 @@ class MyChatRoomPage extends StatefulWidget {
   }
 }
 
+TextEditingController messageEditingController = new TextEditingController();
+
 class _MyChatRoomPageState extends State<MyChatRoomPage> {
+  TextEditingController messageEditingController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     Args arg = ModalRoute.of(context).settings.arguments;
@@ -62,7 +65,39 @@ class _MyChatRoomPageState extends State<MyChatRoomPage> {
                   rvsdList.map((doc) => _buildListItem(doc.data)).toList(),
             );
           },
-        )
+        ),
+        Container(
+          alignment: Alignment.bottomCenter,
+          width: MediaQuery.of(context).size.width,
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+            color: Color(0x54FFFFFF),
+            child: Row(
+              children: [
+                Expanded(
+                    child: TextField(
+                  controller: messageEditingController,
+                  decoration: InputDecoration(hintText: "message"),
+                )),
+                SizedBox(
+                  width: 16,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Firestore.instance.collection('chat').add({
+                      "message": messageEditingController.text,
+                      "sendBy": user,
+                      "postedAt": DateTime.now(),
+                      "room": room,
+                    });
+                    messageEditingController.text = "";
+                  },
+                  child: Container(child: Icon(Icons.send)),
+                ),
+              ],
+            ),
+          ),
+        ),
       ])),
     );
   }
