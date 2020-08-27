@@ -27,39 +27,56 @@ class _MyChatPageState extends State<MyChatPage> {
   Widget _buildBody(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
       stream: Firestore.instance.collection('lang').snapshots(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) return LinearProgressIndicator();
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasError) return Text('Error: ${snapshot.error}');
 
-        return _buildList(context, snapshot.data.documents);
+        switch (snapshot.connectionState) {
+          case ConnectionState.waiting:
+            return LinearProgressIndicator();
+          default:
+            return GridView.count(
+              crossAxisCount: 3,
+              crossAxisSpacing: 4.0,
+              mainAxisSpacing: 4.0,
+              shrinkWrap: true,
+              children: snapshot.data.documents.map((document) {
+                return Container(
+                    padding: const EdgeInsets.all(8.0),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      border: Border.all(color: Colors.blueGrey),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: GridTile(
+                        header: Center(
+                          child: RichText(
+                            text: TextSpan(
+                                text: document.data["name"],
+                                style: TextStyle(
+                                    color: Colors.blueAccent,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18)),
+                          ),
+                        ),
+                        child: document.data["logo"] != null
+                            ? Image.network(document.data["logo"])
+                            : Icon(Icons.chat_outlined),
+                        footer: Center(
+                          child: RichText(
+                            text: TextSpan(
+                                text: "member: " +
+                                    document.data["members"].toString(),
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.blueAccent,
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                        )));
+              }).toList(),
+            );
+        }
       },
-    );
-  }
-
-  Widget _buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
-    return ListView(
-      padding: const EdgeInsets.only(top: 20.0),
-      children: snapshot.map((data) => _buildListItem(context, data)).toList(),
-    );
-  }
-
-  Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
-    final room = Room.fromSnapshot(data);
-
-    return Padding(
-      key: ValueKey(room.name),
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(5.0),
-        ),
-        child: ListTile(
-            title: Text("#" + room.name),
-            trailing: Text("member: " + room.members.toString()),
-            onTap: () =>
-                // TODO
-                print("taped!")),
-      ),
     );
   }
 }
