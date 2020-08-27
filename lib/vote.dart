@@ -61,9 +61,9 @@ class _MyVotePageState extends State<MyVotePage> {
         child: Row(
           children: <Widget>[
             Expanded(
-                child: new TextField(
+                child: TextField(
               autofocus: true,
-              decoration: new InputDecoration(
+              decoration: InputDecoration(
                   labelText: 'name', hintText: 'new language name'),
               onChanged: (value) {
                 newLang = value;
