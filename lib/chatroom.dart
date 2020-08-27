@@ -34,35 +34,41 @@ class _MyChatRoomPageState extends State<MyChatRoomPage> {
           ),
         ],
       ),
-      body: StreamBuilder<QuerySnapshot>(
-        stream: Firestore.instance.collection('chat').snapshots(),
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (snapshot.hasError) return Text('Error: ${snapshot.error}');
+      body: Container(
+          child: Stack(children: [
+        StreamBuilder<QuerySnapshot>(
+          stream: Firestore.instance.collection('chat').snapshots(),
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.hasError) return Text('Error: ${snapshot.error}');
 
-          Iterable<DocumentSnapshot> roomMessages =
-              snapshot.data.documents.where((a) => a.data["room"] == room);
+            if (snapshot.data == null ||
+                snapshot.data.documents == null ||
+                snapshot.data.documents.length < 1) {
+              return Text("No discussion here, please start!");
+            }
 
-          if (roomMessages.length < 1) {
-            return Text("No discussion here, please start!");
-          }
+            Iterable<DocumentSnapshot> roomMessages =
+                snapshot.data.documents.where((a) => a.data["room"] == room);
 
-          var msgList = roomMessages.toList();
-          msgList
-              .sort((a, b) => a.data["postedAt"].compareTo(b.data["postedAt"]));
-          var rvsdList = msgList.reversed.toList();
+            var msgList = roomMessages.toList();
+            msgList.sort(
+                (a, b) => a.data["postedAt"].compareTo(b.data["postedAt"]));
+            var rvsdList = msgList.reversed.toList();
 
-          return ListView(
-            padding: const EdgeInsets.only(top: 20.0),
-            children: rvsdList.map((doc) => _buildListItem(doc.data)).toList(),
-          );
-        },
-      ),
+            return ListView(
+              padding: const EdgeInsets.only(top: 20.0),
+              children:
+                  rvsdList.map((doc) => _buildListItem(doc.data)).toList(),
+            );
+          },
+        )
+      ])),
     );
   }
 }
 
 Widget _buildListItem(Map<String, dynamic> item) {
-  print(item);
   String message = item["message"];
   String user = item["sendBy"].split("@")[0];
   DateTime postedAt = item["postedAt"].toDate();
