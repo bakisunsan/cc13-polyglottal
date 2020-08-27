@@ -1,35 +1,56 @@
-# cc13_polygottal
+# Polygottal - Dart
 
-A new Flutter project.
+This is a Code Chrysalis assignment to learn a new programming language.
 
-## Getting Started
+## Project Summary
 
-This project is a starting point for a Flutter application.
+### Application Features
 
-A few resources to get you started if this is your first Flutter project:
+This is a mobile application that you can vote and discuss programming languages.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+#### Login
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="./readme/login.png"/>
+
+At first, you need to login by email and password. When succeeded, view transits to vote view.
+Email and password are validated on the client side.
+Identity pool and authenticator is Firebase Auth.
+
+#### Vote
+
+<img src="./readme/vote.png"/>
+
+You can vote your favoite languages here.
+And you can also add a new language and see the winner from buttons on navigation area.
+
+<img src="./readme/chatroom.png"/>
+
+You can join the chat room for each language, and start chat.
+
+### Tech Stack
+
+![](./readme/architecture.png)
 
 ## Why Dart?
 
-assembly language c c++ scala typescript javascript python java go c# perl
-VDM++ alloy JCSP OCaml Promela
-(Dart/Rust/Kotlin/Exliar/swift -> react native or flutter?/rails)
+Here are the languages I've written more than one line of code in.
 
-## Set Up
+Because of my weak mobile development experience, I chose Dart, which is available in Flutter. (I ruled out React Native this time because I can't use JavaScript/TypeScript.)
 
-## Write Code
-
-Test
-
-## Flutter
-
-## Resources
+- Assembly Language
+- C
+- C++
+- Scala
+- Typescript
+- JavaScript
+- Python
+- Java
+- Go
+- C#
+- Perl
+- Objective-C
+- OCaml
+- DSL Lanuages(VDM++, Alloy, JCSP, Promela, etc)
 
 ## Check List
 
@@ -44,10 +65,12 @@ Test
 ### Questions to Ask
 
 - [x] Is it already installed on your machine? If so, what version?
-      Not installed yet.
+
+Not installed yet.
 
 - [x] Are there multiple versions of the language? Which is best?
-      Dart1 and Dart2. Dart1 is killed by TypeScript, Dart2 came back to life with Flutter with new powerful language features, like typing.
+
+Dart1 and Dart2. Dart1 is killed by TypeScript, Dart2 came back to life with Flutter with new powerful language features, like typing.
 
 - [x] Is there an online sandbox for your language? Try it out!
 
@@ -55,26 +78,47 @@ Test
 
 - [x] How to install it?
 
-in Mac: brew
+Mac: brew
 
 - [x] What is its package manager?
 
-pub: Dart official package manager
+pub, it is Dart official package manager
 
 - [x] What IDEs are common?
 
-VSCode, Android Studio, IntellJ
+VSCode, Android Studio, IntelliJ, and DartPad
 
-- [ ] What testing suite is most popular?
-- [ ] Where does your package manager load dependencies from?
-- [ ] What are the most popular frameworks?
-- [ ] Does your chosen language have a debugger?
-- [ ] Are there any recent interesting threads or posts on HackerNews about your language?
+- [x] What testing suite is most popular?
+
+test: Dart official test library
+mockito: Dart official mock library
+flutter_driver: Flutter official test driver for Flutter Integration test.
+
+- [x] Where does your package manager load dependencies from?
+
+pub
+
+- [x] What are the most popular frameworks?
+
+mobile -> Flutter
+
+server -> Server-side Dart
+
+web -> AngularDart
+
+- [x] Does your chosen language have a debugger?
+
+Dart Debugger: console tool like gdb
+Dart Dev Tools: rich debugger tool work as web application
+
+- [x] Are there any recent interesting threads or posts on HackerNews about your language?
+
+[Flutter and Dart, or how to quickly build a mobile app without losing your hair](https://news.ycombinator.com/item?id=22454115)
 
 ### Stage 0
 
 - [x] Decide what your project will be.
-- [ ] Send 2-3 sentence summary to staff (on #assignment that includes what you plan to build and why it makes sense with the language you chose.
+- [x] Send 2-3 sentence summary to staff (on #assignment that includes what you plan to build and why it makes sense with the language you chose.
 
 ### Stage 1
 
@@ -135,10 +179,11 @@ Dart official says [major IDEs are](https://dart.dev/tools):
 
 and also, [DartPad](https://dartpad.dev/)
 
-VS Code Extensions:
+Install VS Code Extensions:
 
-- Dart
-- Flutter
+Dart
+
+Flutter
 
 - [x] Build and run “hello world”
 
@@ -149,6 +194,10 @@ dart bin/cc13_polyglottal.dart
 ```
 
 Console(AOT to native machine code)
+
+```
+dart2native bin/cc13_polyglottal.dart
+```
 
 ### Stage 2
 
@@ -230,43 +279,44 @@ run flutter app
 flutter run
 ```
 
-- [ ] Figure out how to debug
+- [x] Figure out how to debug
 
 ### Stage 3
 
-- [ ] Research how to test your project. We aren't requiring you to write tests for your project in these beginning phases, but you need to know what frameworks are used and how people are testing products built in your language.
-- [ ] Tear the project down to its core
-- [ ] Build it back up in your vision
-- [ ] Tips and Suggestions [Totally Optional]
-- [ ] Find the 'koans' for your chosen language! Koans is a nice, quick way to learn the environment setup, testing framework, and syntax of a new language. Do a quick Google search to find the koans for your language (i.e. 'ruby koans').
-- [ ] Find a cheat sheet! While not in-depth, they do help if you need a quick reference.
+- [x] Research how to test your project. We aren't requiring you to write tests for your project in these beginning phases, but you need to know what frameworks are used and how people are testing products built in your language.
+- [x] Tear the project down to its core
+- [x] Build it back up in your vision
+- [x] Tips and Suggestions [Totally Optional]
+- [x] Find the 'koans' for your chosen language! Koans is a nice, quick way to learn the environment setup, testing framework, and syntax of a new language. Do a quick Google search to find the koans for your language (i.e. 'ruby koans').
+- [x] Find a cheat sheet! While not in-depth, they do help if you need a quick reference.
 - [x] Avoid doing codecademy/prog8---while those are helpful when you are starting with your first language, you should try to stick to official and community resources for your language.
 
 ### Basic Requirements
 
 At the end of the week in Block 4+5, you will give a presentation on your language and what you did.
 
-- [ ] A demo of your app is mandatory.
-- [ ] Have a Demo and show some source code while talking about your language
-- [ ] Try to coordinate your topics with other students that chose the same language.
-- [ ] Some topic ideas to talk about:
-- [ ] Your language's ecosystem (IDEs, dependencies, package managers, community, etc.)
-- [ ] Comparison of new language to JavaScript
+- [x] A demo of your app is mandatory.
+- [x] Have a Demo and show some source code while talking about your language
+- [x] Try to coordinate your topics with other students that chose the same language.
+- [x] Some topic ideas to talk about:
+- [x] Your language's ecosystem (IDEs, dependencies, package managers, community, etc.)
+- [x] Comparison of new language to JavaScript
 - [x] Is it typed? Strong/Loose? Dynamic/Static?
 - [x] Basic data types
-- [ ] Concepts like functions/classes
-- [ ] Does it have modules? A similar concept?
+- [x] Concepts like functions/classes
+- [x] Does it have modules? A similar concept?
 - [x] If it has a frontend framework, draw comparisons from it to React/Vue
-- [ ] If it has a server framework, draw comparisons to express
+- [x] If it has a server framework, draw comparisons to express
 - [x] Describe how testing works in the new language
       Famous framework to use
 - [x] Style of tests (BDD?)
-- [ ] Share challenges you experienced while learning the new language
+- [x] Share challenges you experienced while learning the new language
 - [x] Explain the strengths of the new language
 - [x] Describe what types of projects it is best suited for
 - [x] Anything else that you believe would be beneficial
-- [ ] A project README that covers what you did and used. Your README should be easy to understand for someone who wants to work on your project. If you want to see what a good README looks like, check out this link and these readmes.
+- [x] A project README that covers what you did and used. Your README should be easy to understand for someone who wants to work on your project. If you want to see what a good README looks like, check out this link and these readmes.
       Your README should also include your presentation slide deck and instructions for your demo (if applicable)
+      [Google Slide Link HERE](https://docs.google.com/presentation/d/18f6c3dGqwrvOlkq0VibTPZqnGciUqggX8FifyHFeBwk/edit?usp=sharing)
 
 ### Advanced Requirements
 
