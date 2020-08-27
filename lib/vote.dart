@@ -19,7 +19,7 @@ class _MyVotePageState extends State<MyVotePage> {
         title: Text('Your Favorite Lang'),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.control_point_outlined),
+            icon: Icon(Icons.control_point_outlined),
             onPressed: () {
               showDialog(
                 context: context,

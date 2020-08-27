@@ -105,8 +105,17 @@ class _MySignInPageState extends State<MySignInPage> {
                       onPressed: () {
                         print("Google");
                         signInWithGoogle(context)
-                            .then((result) => {print(result)})
-                            .catchError((e) => {print(e)});
+                            .then((AuthResult result) => Navigator.of(context)
+                                .pushNamed('/vote', arguments: result))
+                            .catchError((e) => {
+                                  showDialog(
+                                    context: context,
+                                    builder: (_) {
+                                      return _buildAuthFailedDialog(
+                                          "Google Sign-In failed");
+                                    },
+                                  )
+                                });
                       },
                     ),
                   ),
