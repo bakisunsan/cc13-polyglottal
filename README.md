@@ -15,6 +15,7 @@ This is a mobile application that you can vote and discuss programming languages
 At first, you need to login by email and password. When succeeded, view transits to vote view.
 Email and password are validated on the client side.
 Identity pool and authenticator is Firebase Auth.
+You can also login with google sign-in.
 
 #### Vote
 
