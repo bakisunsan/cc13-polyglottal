@@ -23,9 +23,13 @@ Identity pool and authenticator is Firebase Auth.
 You can vote your favoite languages here.
 And you can also add a new language and see the winner from buttons on navigation area.
 
+#### Select Chatroom
+
 <img src="./readme/chatroom.png" height=480px/>
 
 You can join the chat room as a member of the room for each language, and start chat.
+
+#### Chatting
 
 <img src="./readme/chat.png" height=480px/>
 
