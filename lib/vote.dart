@@ -13,8 +13,6 @@ class _MyVotePageState extends State<MyVotePage> {
   @override
   Widget build(BuildContext context) {
     final AuthResult auth = ModalRoute.of(context).settings.arguments;
-    print("vote");
-    print(auth);
 
     return Scaffold(
       appBar: AppBar(

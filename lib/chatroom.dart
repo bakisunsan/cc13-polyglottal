@@ -16,9 +16,6 @@ class _MyChatRoomPageState extends State<MyChatRoomPage> {
     Args arg = ModalRoute.of(context).settings.arguments;
     String user = arg.auth.user.email;
     String room = arg.room;
-    print("chatroom");
-    print(user);
-    print(room);
 
     return Scaffold(
       appBar: AppBar(

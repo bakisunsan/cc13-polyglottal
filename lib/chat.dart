@@ -14,8 +14,6 @@ class _MyChatPageState extends State<MyChatPage> {
   @override
   Widget build(BuildContext context) {
     final AuthResult auth = ModalRoute.of(context).settings.arguments;
-    print("chat");
-    print(auth);
 
     return Scaffold(
       appBar: AppBar(
