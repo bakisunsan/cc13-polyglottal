@@ -10,7 +10,7 @@ This is a mobile application that you can vote and discuss programming languages
 
 #### Login
 
-<img src="./readme/login.png"/>
+<img src="./readme/login.png" height=480px/>
 
 At first, you need to login by email and password. When succeeded, view transits to vote view.
 Email and password are validated on the client side.
@@ -18,12 +18,12 @@ Identity pool and authenticator is Firebase Auth.
 
 #### Vote
 
-<img src="./readme/vote.png"/>
+<img src="./readme/vote.png" height=480px/>
 
 You can vote your favoite languages here.
 And you can also add a new language and see the winner from buttons on navigation area.
 
-<img src="./readme/chatroom.png"/>
+<img src="./readme/chatroom.png" height=480px/>
 
 You can join the chat room for each language, and start chat.
 
