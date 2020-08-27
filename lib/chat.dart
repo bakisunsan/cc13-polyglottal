@@ -59,9 +59,24 @@ class _MyChatPageState extends State<MyChatPage> {
                                     fontSize: 18)),
                           ),
                         ),
-                        child: document.data["logo"] != null
-                            ? Image.network(document.data["logo"])
-                            : Icon(Icons.chat_outlined),
+                        child: GestureDetector(
+                            onTap: () {
+                              var channel = document.data["name"];
+                              var members = document.data["members"] + 1;
+
+                              var snackBar = SnackBar(
+                                  content: Text(
+                                      "Hello! $members th $channel channel member"));
+                              Scaffold.of(context).showSnackBar(snackBar);
+
+                              final record = Room.fromSnapshot(document);
+                              record.reference.updateData(
+                                  {'members': FieldValue.increment(1)});
+                            },
+                            child: Container(
+                                child: document.data["logo"] != null
+                                    ? Image.network(document.data["logo"])
+                                    : Icon(Icons.chat_outlined))),
                         footer: Center(
                           child: RichText(
                             text: TextSpan(
