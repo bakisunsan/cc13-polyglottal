@@ -17,7 +17,7 @@ class _MyChatPageState extends State<MyChatPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Talk about langs'),
+        title: Text('Talk about langs'),
       ),
       body: _buildBody(context, auth),
     );

@@ -67,6 +67,7 @@ Widget _buildListItem(Map<String, dynamic> item) {
   String user = item["sendBy"].split("@")[0];
   DateTime postedAt = item["postedAt"].toDate();
 
+// user + "\n" + DateFormat('MM/dd/yyyy HH:mm').format(postedAt)
   return Padding(
     key: ValueKey(message),
     padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
@@ -74,8 +75,13 @@ Widget _buildListItem(Map<String, dynamic> item) {
         decoration: BoxDecoration(),
         child: ListTile(
           title: Text(message),
-          trailing: Text(
-              user + "\n" + DateFormat('MM/dd/yyyy HH:mm').format(postedAt)),
+          trailing: RichText(
+            text: TextSpan(
+                text: user +
+                    "\n" +
+                    DateFormat('MM/dd/yyyy HH:mm').format(postedAt),
+                style: TextStyle(color: Colors.grey, fontSize: 12)),
+          ),
         )),
   );
 }
