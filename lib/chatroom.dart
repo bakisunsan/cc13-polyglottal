@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:intl/intl.dart';
 
 class MyChatRoomPage extends StatefulWidget {
   @override
@@ -64,7 +65,22 @@ class _MyChatRoomPageState extends State<MyChatRoomPage> {
 }
 
 Widget _buildListItem(Map<String, dynamic> item) {
-  return Text(item["message"]);
+  print(item);
+  String message = item["message"];
+  String user = item["sendBy"].split("@")[0];
+  DateTime postedAt = item["postedAt"].toDate();
+
+  return Padding(
+    key: ValueKey(message),
+    padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
+    child: Container(
+        decoration: BoxDecoration(),
+        child: ListTile(
+          title: Text(message),
+          trailing: Text(
+              user + "\n" + DateFormat('MM/dd/yyyy HH:mm').format(postedAt)),
+        )),
+  );
 }
 
 Widget _buildUserDialog(String user) {
