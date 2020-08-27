@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import './chatroom.dart';
 
 class MyChatPage extends StatefulWidget {
   @override
@@ -73,11 +74,9 @@ class _MyChatPageState extends State<MyChatPage> {
                                   {'members': FieldValue.increment(1)});
 
                               Future.delayed(new Duration(seconds: 2)).then(
-                                  (value) => Navigator.of(context)
-                                          .pushNamed('/chatroom', arguments: {
-                                        "auth": auth,
-                                        "room": channel
-                                      }));
+                                  (value) => Navigator.of(context).pushNamed(
+                                      '/chatroom',
+                                      arguments: Args(auth, channel)));
                             },
                             child: Container(
                                 child: document.data["logo"] != null
