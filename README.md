@@ -1,6 +1,8 @@
 # Polygottal - Dart
 
 This is a Code Chrysalis assignment to learn a new programming language.
+[Google Slide Link HERE](https://docs.google.com/presentation/d/18f6c3dGqwrvOlkq0VibTPZqnGciUqggX8FifyHFeBwk/edit?usp=sharing)
+
 
 ## Project Summary
 
@@ -335,7 +337,6 @@ At the end of the week in Block 4+5, you will give a presentation on your langua
 - [x] Anything else that you believe would be beneficial
 - [x] A project README that covers what you did and used. Your README should be easy to understand for someone who wants to work on your project. If you want to see what a good README looks like, check out this link and these readmes.
       Your README should also include your presentation slide deck and instructions for your demo (if applicable)
-      [Google Slide Link HERE](https://docs.google.com/presentation/d/18f6c3dGqwrvOlkq0VibTPZqnGciUqggX8FifyHFeBwk/edit?usp=sharing)
 
 ### Advanced Requirements
 
